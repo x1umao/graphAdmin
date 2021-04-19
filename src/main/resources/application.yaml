@@ -5,3 +5,10 @@ server:
     keyStoreType: PKCS12
     keyAlias: tomcat
   port: 443
+spring:
+  thymeleaf:
+    cache: false
+    mode: HTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
