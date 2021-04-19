@@ -21,11 +21,14 @@ public class UserService {
         }
     }
 
-    public boolean verifyUser(User user){
+    public int verifyUser(User user){
         String password = user.getPassword();
         String username = user.getUsername();
         //对password hmac
         String pwd = database.get(username);
-        return password.equals(pwd);
+        if(password.equals(pwd)){
+            return 1;// successful login
+        }
+        return 0;
     }
 }
