@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,10 +30,10 @@ public class LoginController {
 
     @PostMapping("/doLogin")
     @ResponseBody
-    public Map<String, Integer> login(@ModelAttribute User user) {
+    public Map<String, Integer> login(@ModelAttribute User user, HttpServletResponse response) {
         System.out.println(user);
         Map<String, Integer> resData = new HashMap<>();
-        resData.put("msg", userService.verifyUser(user));
+        resData.put("msg", userService.verifyUser(user,response));
         return resData;
     }
 
