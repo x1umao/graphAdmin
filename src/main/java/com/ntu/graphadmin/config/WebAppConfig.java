@@ -18,5 +18,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
         InterceptorRegistration interceptorRegistration = registry.addInterceptor(new SessionInterceptor());
         interceptorRegistration.addPathPatterns("/admin-dash");
         interceptorRegistration.addPathPatterns("/admin-validate");
+        interceptorRegistration.addPathPatterns("/upload");
+        interceptorRegistration.addPathPatterns("/logout");
     }
 }
