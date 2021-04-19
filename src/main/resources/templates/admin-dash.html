@@ -27,7 +27,7 @@
 						</div>
 					</div>
 					<div class="col-6">
-						<button class="btn btn-dark float-right"><a href="login.html">Logout</a></button>
+						<button class="btn btn-dark float-right" type="button" onclick="logout()">Logout</button>
 					</div>
 				</div>
 			</div>
@@ -69,4 +69,11 @@
 	</div>
 </div>
 </body>
+<script>
+	function logout(){
+		$.get("/logout",data=>{
+			window.location.href="/login";
+		})
+	}
+</script>
 </html>
