@@ -30,10 +30,10 @@ public class LoginController {
 
     @PostMapping("/doLogin")
     @ResponseBody
-    public Map<String, Integer> login(@ModelAttribute User user, HttpServletResponse response) {
+    public Map<String, Integer> login(@ModelAttribute User user, HttpServletRequest request) {
         System.out.println(user);
         Map<String, Integer> resData = new HashMap<>();
-        resData.put("msg", userService.verifyUser(user,response));
+        resData.put("msg", userService.verifyUser(user,request));
         return resData;
     }
 

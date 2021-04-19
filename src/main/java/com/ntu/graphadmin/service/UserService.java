@@ -4,6 +4,7 @@ import com.ntu.graphadmin.entity.User;
 import com.ntu.graphadmin.util.HmacUtil;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -29,7 +30,7 @@ public class UserService {
 
     }
 
-    public int verifyUser(User user, HttpServletResponse response){
+    public int verifyUser(User user, HttpServletRequest request){
         String password = user.getPassword();
         String username = user.getUsername();
         //check empty string
@@ -39,11 +40,11 @@ public class UserService {
 
         //对password hmac
         password = HmacUtil.encode(password,key);
-        System.out.println(database);
         System.out.println(password);
         String pwd = database.get(username);
         if(password.equals(pwd)){
             //keep session
+            request.getSession().setAttribute("user",user);
             //set session id in the cookie
             return 1;// successful login
         }
